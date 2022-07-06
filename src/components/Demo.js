@@ -34,7 +34,9 @@ export class Demo extends Component {
           </div>
         )
       })
-    ) : ()
+    ) : (
+      <div className='center'>Not able to Load</div>
+    )
     return (
       <div>
         Hello

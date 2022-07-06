@@ -16,17 +16,17 @@ export class NewsItem extends Component {
         })
   }
   render() {
-    // let {title , desc} = this.props
+    let {title , desc, url} = this.props
     return (
       <div className='container my-3'>
       <div className="card" style={{width: "18rem"}}>
-        <img src="..." className="card-img-top" alt="..." />
+        <img src={url} className="card-img-top" alt="..." />
         <div className="card-body">
-          <h5 className="card-title">TITLE</h5>
+          <h5 className="card-title">{title}</h5>
           <p className="card-text">
-            HEllo this is content
+            {desc}
           </p>
-          <a href="/" className="btn btn-primary">
+          <a href="/" className="btn btn-sm btn-primary">
             Go somewhere
           </a>
         </div>
