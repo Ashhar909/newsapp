@@ -26,7 +26,7 @@ export class NewsItem extends Component {
           <p className="card-text">
             {desc}
           </p>
-          <a href="/" className="btn btn-sm btn-primary">
+          <a href="/newsdetail/" className="btn btn-sm btn-primary">
             Go somewhere
           </a>
         </div>
