@@ -334,29 +334,41 @@ export class News extends Component {
     },
   ];
 
-  constructor() {
-    super();
-    this.setState({
-      articles: this.articles,
-      loading: false,
-    });
-  }
+  // constructor() {
+  //   super();
+  //   this.setStatestate({
+  //     articles: this.articles,
+  //     loading: false,
+  //   });
+  // }
   render() {
     return (
       <div className="container my-3">
         <h2>Top headlines</h2>
         <div className="row">
-          <div className="col-md-3">
-            <NewsItem
+          
+            {this.articles.map(item => {
+              return(
+              <div className="col-md-3" key={item.url}>
+              <NewsItem
+              title={item.title}
+              desc={item.description}
+              url={item.urlToImage}
+              newsUrl={item.url}
+            />
+            </div>
+            )  
+            })}
+            {/* <NewsItem
               title={"titel 1"}
               desc={"desc 1"}
               url={
                 "https://image.cnbcfm.com/api/v1/image/107027626-1646832791746-gettyimages-1239047379-CERAWEEK_2022.jpeg?v=1657087865&w=1920&h=1080"
               }
-              newsUrl={"todo"}
-            />
+              newsUrl={"todo"} */}
+            {/* /> */}
           </div>
-          <div className="col-md-3">
+          {/* <div className="col-md-3">
             <NewsItem title={"titel 1"} desc={"desc 1"} />
           </div>
           <div className="col-md-3">
@@ -364,8 +376,8 @@ export class News extends Component {
           </div>
           <div className="col-md-3">
             <NewsItem title={"titel 1"} desc={"desc 1"} />
-          </div>
-        </div>
+          </div> */}
+        {/* </div> */}
       </div>
     );
   }

@@ -8,7 +8,7 @@ export class Demo extends Component {
   componentDidMount(){
     axios.get('https://newsapi.org/v2/top-headlines?country=us&apiKey=0d896d1dde8e45d09ee92398097e3fc2')
         .then(res => {
-            console.log(res);
+            // console.log(res);
             this.setState({
               news:res.data.articles
             })
