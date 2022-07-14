@@ -1,0 +1,20 @@
+Using API
+we get this from the API sites: a json response
+    To get these we us 'axios'
+
+    axios.get('......')     the get request which is async in nature
+    .then(res => {
+        //get the response from the Api in console
+        console.log(res)
+        // put it in some state variable
+    })
+
+
+Lifecycle methods :
+ constructor loads before everyone 
+ then the render method
+ and after the render there is componentDidMount
+
+
+NewsApi only lets you use the data on localhost 
+
