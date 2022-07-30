@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React  from "react";
 
-export class NewsItem extends Component {
-  render() {
-    let { title, desc, imageUrl, newsUrl } = this.props;
-    return (
+const NewsItem = (props) => {
+  let { title, desc, imageUrl, newsUrl } = props;
+  return (
+    <div>
       <div className="container my-3">
         <div
           className="card"
-          style={{ width: "18rem", height: "600px", overflow: "hidden" }}
+          style={{ width: "18rem", height: "500px", overflow: "hidden" }}
         >
           <img
             src={
@@ -20,7 +20,7 @@ export class NewsItem extends Component {
           />
           <div className="card-body">
             <h5 className="card-title">{title}</h5>
-            <p className="card-text">{desc}</p>
+            <p className="card-text">{desc? desc.slice(0,100)+'...':""}</p>
             <a
               href={newsUrl}
               className="btn btn-sm btn-primary"
@@ -31,8 +31,8 @@ export class NewsItem extends Component {
           </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  )
 }
 
-export default NewsItem;
+export default NewsItem

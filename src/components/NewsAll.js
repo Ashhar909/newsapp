@@ -1,47 +1,106 @@
-import React, { Component } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import NewsItem from "./NewsItem";
-import axios from 'axios'
+import newsContext from "../Context/NewsContext";
 
-export class NewsAll extends Component {
-  
-  constructor(){
-    super();
-    this.state = {
-      articles:[]
-    }
-  }
-  
+const NewsAll = () => {
+  const context = useContext(newsContext);
 
-  componentDidMount(){
-    axios.get('https://newsapi.org/v2/top-headlines?country=us&apiKey=0d896d1dde8e45d09ee92398097e3fc2')
-        .then(res => {
-            this.setState({
-              articles:res.data.articles
-            })
-        })
-  }
+  const { news, fetchAll, theme } = context;
 
-  render() {
-    return (
-      <div className="container my-3">
-        <h1>Top headlines</h1>
-        <div className="row">
-          {this.state.articles.map((item) => {
-            return (
-              <div className="col-md-3" key={item.url}>
-                <NewsItem
-                  title={item.title}
-                  desc={item.description}
-                  imageUrl={item.urlToImage}
-                  newsUrl={item.url}
-                />
-              </div>
-            );
-          })}
+  const [category, setCategory] = useState("general");
+
+  const handleClick = async (e) => {
+    setCategory(e.target.value);
+  };
+
+  useEffect(() => {
+    fetchAll(category);
+    // eslint-disable-next-line
+  }, [category]);
+
+  return (
+    <div className="container my-3">
+      <div className="dropdown">
+        <button
+          className={`btn dropdown-toggle btn-${
+            theme.mode === "light" ? "secondary" : "dark"
+          }`}
+          type="button"
+          id="dropdownMenu2"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Select Category
+        </button>
+        <div
+          className="dropdown-menu"
+          style={{
+            backgroundColor: `${theme.mode === "light" ? "white" : "black"}`,
+          }}
+          aria-labelledby="dropdownMenu2"
+        >
+          <button
+            className={`dropdown-item ${
+              theme.mode === "light" ? "lt" :"dk"
+            } text-${
+              theme.mode === "light" ? "dark" : "light"
+            }`}
+            type="button"
+            onClick={handleClick}
+            value="general"
+          >
+            General
+          </button>
+          <button
+            className={`dropdown-item ${
+              theme.mode === "light" ? "lt" :"dk"
+            } text-${
+              theme.mode === "light" ? "dark" : "light"
+            }`}
+            type="button"
+            onClick={handleClick}
+            value="sports"
+          >
+            Sports
+          </button>
+          <button
+            className={`dropdown-item ${
+              theme.mode === "light" ? "lt" :"dk"
+            } text-${
+              theme.mode === "light" ? "dark" : "light"
+            }`}
+            type="button"
+            onClick={handleClick}
+            value="technology"
+          >
+            Tech
+          </button>
         </div>
       </div>
-    );
-  }
-}
+      <div className="container my-3">
+        <h1>Top headlines {category}</h1>
+        <div className="row">
+          {news.articles ? (
+            news.articles.map((item) => {
+              return (
+                <div className="col-md-3" key={item.url}>
+                  <NewsItem
+                    title={item.title}
+                    desc={item.description}
+                    imageUrl={item.urlToImage}
+                    newsUrl={item.url}
+                  />
+                </div>
+              );
+            })
+          ) : (
+            <div>Loading...</div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default NewsAll;

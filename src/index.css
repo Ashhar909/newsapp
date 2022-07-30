@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.dropdown .dropdown-menu .dk {
+  transition: 0.3s;
+}
+.dropdown .dropdown-menu .dk:hover {
+  background-color: black;
+  z-index: 1;
+  border-left: 5px solid white;
+}
+
+
+.dropdown .dropdown-menu .lt {
+  transition: 0.3s;
+}
+.dropdown .dropdown-menu .lt:hover {
+  background-color: white;
+  z-index: 1;
+  border-left: 5px solid black;
+}
