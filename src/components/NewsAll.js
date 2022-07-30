@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import NewsItem from "./NewsItem";
 import axios from 'axios'
 
-export class Demo2 extends Component {
+export class NewsAll extends Component {
   
   constructor(){
     super();
@@ -44,4 +44,4 @@ export class Demo2 extends Component {
   }
 }
 
-export default Demo2;
+export default NewsAll;
