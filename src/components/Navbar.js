@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import newsContext from "../Context/NewsContext";
+import LoadingBar from 'react-top-loading-bar'
 
 export function Navbar() {
   const context = useContext(newsContext);
-  const { theme, setTheme, fetchAll } = context;
+  const { theme, setTheme, fetchAll, page, progress } = context;
 
-  const [category, setCategory] = useState("general");
-
+  
   const handleClickTheme = () => {
     if (theme.mode === "light") {
       setTheme({
@@ -35,19 +35,27 @@ export function Navbar() {
   // reason why i put it here was that it was taking action after one step after re render 
   // so i had to put background dark in background light
   document.body.style.backgroundColor = theme.bgColor;
-
+  
+  const [category, setCategory] = useState("general");
   const handleClick = (e) => {
     setCategory(e.target.value);
   };
 
+
   useEffect(() => {
     fetchAll(category);
     // eslint-disable-next-line
-  }, [category]);
-  // whenever category changes re renders the Dom
+  }, [page, category]);
+  // whenever category or page changes re renders the Dom
 
+  
   return (
     <div>
+    <LoadingBar 
+    color="#f11946" 
+    heading
+    progress={progress} 
+    />
       <nav className="navbar navbar-expand-lg" style={{backgroundColor: theme.navbar}}>
         <div className="container-fluid">
           <a className={`navbar-brand`} href="/">

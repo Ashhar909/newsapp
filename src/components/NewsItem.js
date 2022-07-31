@@ -1,4 +1,4 @@
-import React, { useContext }  from "react";
+import React, { useContext } from "react";
 import newsContext from "../Context/NewsContext";
 
 const NewsItem = (props) => {
@@ -11,7 +11,12 @@ const NewsItem = (props) => {
       <div className="container my-3">
         <div
           className="card"
-          style={{ width: "18rem", height: "500px", overflow: "hidden",backgroundColor: theme.card }}
+          style={{
+            width: "18rem",
+            height: "500px",
+            overflow: "hidden",
+            backgroundColor: theme.card,
+          }}
         >
           <img
             src={
@@ -24,19 +29,26 @@ const NewsItem = (props) => {
           />
           <div className="card-body">
             <h5 className={`card-title text-${theme.text}`}>{title}</h5>
-            <p className={`card-text text-${theme.text}`}>{desc? desc.slice(0,100)+'...':""}</p>
+            <p className={`card-text text-${theme.text}`}>
+              {desc ? desc.slice(0, 100) + "..." : ""}
+            </p>
             <a
               href={newsUrl}
               className={`btn btn-sm btn-dark`}
-              style={{ position: "absolute", bottom: "15px", right: "15px" ,padding: "10px"}}
+              style={{
+                position: "absolute",
+                bottom: "15px",
+                right: "15px",
+                padding: "10px",
+              }}
             >
-              View  
+              View
             </a>
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NewsItem
+export default NewsItem;
