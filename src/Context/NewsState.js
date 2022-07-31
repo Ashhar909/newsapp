@@ -9,7 +9,10 @@ const NewsState = (props) => {
 
     const [theme, setTheme] = useState({
         mode: "light",
-        bgColor: "#7DFDFE"
+        text:"dark",
+        bgColor:"white",
+        card: "#C0C0C0",
+        navbar:"black"
     })
 
     const fetchAll = async (category) => {
