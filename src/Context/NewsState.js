@@ -16,6 +16,7 @@ const NewsState = (props) => {
     })
 
     const fetchAll = async (category) => {
+        document.body.style.backgroundColor = theme.bgColor;
         await axios.get(`https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=0d896d1dde8e45d09ee92398097e3fc2`)
         .then(res => {
             setNews({

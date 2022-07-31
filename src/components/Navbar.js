@@ -13,7 +13,8 @@ export function Navbar() {
         ...theme,
         mode: "dark",
         text:"light",
-        bgColor: "white",
+        bgColor: "#4B0150",
+        // bgColor: "white",
         card: "#36013F",
         navbar:"#36013F"
       });
@@ -23,13 +24,17 @@ export function Navbar() {
         ...theme,
         mode: "light",
         text:"dark",
-        bgColor: "#4B0150",
+        bgColor: "white",
+        // bgColor: "#4B0150",
         card: "#C0C0C0",
         navbar:"black"
       });
     }
-    document.body.style.backgroundColor = theme.bgColor;
   };
+  
+  // reason why i put it here was that it was taking action after one step after re render 
+  // so i had to put background dark in background light
+  document.body.style.backgroundColor = theme.bgColor;
 
   const handleClick = (e) => {
     setCategory(e.target.value);
@@ -57,7 +62,7 @@ export function Navbar() {
             id="flexSwitchCheckReverse"
             onClick={handleClickTheme}
           />
-          <label class="form-check-label" for="flexSwitchCheckReverse">
+          <label className="form-check-label" htmlFor="flexSwitchCheckReverse">
           </label>
         </div>
         <div className="dropdown mx-3">
